@@ -1,0 +1,313 @@
+
+
+
+负责接口：团队入驻、企业入驻
+
+
+数据库字段
+团队入驻 
+	表名：team
+
+	唯一uid:  tuid
+
+	团队头像：theader
+	团队名称：ttitle
+	地址：taddress
+	团队负责人：tpeople
+	联系方式：ttel
+	负责人身份证：tnumberid
+	身份证正面照：tcardzheng
+	身份证反面照：tcardfan
+	团队密钥：tkey
+	团队作品：tworks
+	审核：tpass
+	登录人uid:nameid
+
+
+企业入驻 
+	表名：qiye
+
+	唯一uid:  quid
+
+	企业头像：qheader
+	企业名称：qtitle
+	地址：qaddress
+	企业负责人：qpeople
+	联系方式：qtel
+	企业营业执照：qimg
+	企业密钥：qkey
+	审核：qpass
+	登录人uid:nameid
+
+
+	
+
+
+
+
+团队接口文档：
+ 
+
+1.申请团队入驻信息接口
+
+	method:post
+
+	url:"http://'+ip+'/tenter/team",
+
+	REQ:{
+		TeamAvatar：团队头像
+		TeamName：团队名称
+		TeamAddress：地址
+		TeamLeader：团队负责人
+		TContactInformation：联系方式
+		IdentityCard ：负责人身份证号
+		IdcardZheng:身份证正面照
+		IdcardFan:身份证反面照
+		TeamKey：团队密钥
+		TeamWork：团队作品
+		TeamAudit：审核
+		nameuid:登录人uid
+	     }
+
+	 RES:：
+		企业已注册
+		团队已注册
+		注册成功
+		
+
+
+2.修改密钥，审核接口
+
+	method:post
+
+	url:"http://'+ip+'/tenter/change",
+
+	REQ:{
+		TeamKey: 团队密钥
+		TeamAudit:审核状态
+		tuid:登录人uid
+	     }
+
+	RES：
+		flag:1  修改成功
+		flag:2  修改失败
+
+
+3.判断团队、企业注册
+
+	method：post
+
+   	url:'http://'+ip+'/users/tusndui',
+
+       	REQ:{
+
+             	uid:登录人id
+		yuandid:'2'  
+
+             }
+
+
+4.上传头像 鉴别黄图
+	
+	method:post
+
+	url: "http://'+ip+'/yanzhengs/huang",
+
+	REQ: 上传的图片
+
+	RES：
+		正常
+		性感
+		色情
+
+
+5. 上传身份证正面 / 反面
+
+	method:post
+
+	url:"http://'+ip+'/yanzhengs/shenfene",
+
+	REQ:上传的图片
+
+	RES：
+		身份证正面
+		身份证反面
+		营业执照
+
+
+6. 上传多张作品
+
+	method:post
+
+	url: "http://'+ip+'/yanzhengs/huang",
+
+	REQ:上传的图片
+
+	RES：
+		正常
+		性感
+		色情
+
+
+7. 删除上传作品
+
+	method:post
+
+	url:"http://'+ip+'/yanzhengs/shenle",
+
+	REQ:{
+		url:图片路径
+	     }
+
+	RES：
+		成功
+		失败
+
+
+
+企业接口文档：
+
+
+
+
+1.申请企业入驻信息接口
+
+	method:post
+
+	url:"http://'+ip+'/qenter/enterprise",
+
+	data:{
+		CorporateHead：企业头像
+		CompanyName：企业名称
+		CompanyAddress：地址
+		CompanyLeader：企业负责人
+		CompanyInformation：联系方式
+		CompanyKey：企业密钥
+		CompanyWork：企业营业执行照片
+		CompanyAudit：企业审核
+		nameuid:登录人uid
+	     }
+
+	返回值：		
+		企业已注册
+		团队已注册
+		flag:1  可以注册
+
+
+
+
+2.修改密钥，审核接口
+
+	method:post
+
+	url: "http://'+ip+'/qenter/qdetailPass",
+
+	REQ:{
+		qiyKey: 团队密钥
+		qiyAudit:审核状态
+		quid:登录人uid
+	     }
+
+	RES：
+		flag:1  修改成功
+		flag:2  修改失败
+
+
+
+
+3.判断团队、企业注册
+
+	method：post
+
+   	url:'http://'+ip+'/users/tusndui',
+
+       	REQ:{
+
+             	uid:登录人id
+		yuandid:'2'  
+
+             }
+
+
+5. 上传企业营业执照
+
+	method:post
+
+	url:"http://'+ip+'/yanzhengs/shenfene",
+
+	REQ:上传的图片
+
+	RES：
+		身份证正面
+		身份证反面 
+		营业执照 --成功
+
+
+
+
+
+
+
+2.查询企业店铺名称接口
+	
+	method:get
+	
+	url:"http://'+ip+'/qenter/searchq",
+
+	data:{
+		CompanyName:"我是小钰",   //：企业名称
+	     }
+
+	返回值：
+		flag:1  查询成功
+		flag:2  查询不到
+
+
+3.查看审核状态接口
+
+	method:get
+
+	url:"http://"+ip+"/qenter/auditstausq",
+
+	data:{
+		CompanyAudit:"3",   //：企业审核
+	     }
+
+	返回值：
+		flag:1  审核通过
+		flag:2  审核不通过
+
+4.删除此条信息
+
+
+	method:get
+
+	url:"http://'+ip+'/tenter/delete",
+
+	data:{
+		Companyid:"2",   //：企业id
+	     }
+
+	返回值：
+		flag:1  查询成功
+		flag:2  查询不到
+
+
+
+5.修改密钥，审核接口
+
+	method:post
+
+	url:"http://'+ip+'/qenter/changeq",
+
+	data:{
+		CompanyKey: timestamp+"11", //：企业密钥（时间戳+uid)
+		CompanyAudit:"1",
+		quid:"1"//：审核状态
+	     }
+
+	返回值：
+		flag:1  修改成功
+		flag:2  修改失败
+
+

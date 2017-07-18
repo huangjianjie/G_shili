@@ -1,0 +1,133 @@
+shopUid      店铺ID
+
+vacancyOne   预留一
+vacancyTwo   预留二
+vacancyThree 预留三
+
+//查看所有店铺接口
+
+method:get
+url:http://'+ip+'/personal/all
+REQ:{
+
+}
+RES:{
+   flag:1 查询成功 返回该所有店铺表信息
+   flag:2 没有查到信息
+}
+
+//查看所有店铺接口分页
+
+method:get
+url:http://'+ip+'/personal/limit
+REQ:{
+  begin:0;//从第几条开始寻找
+  num:6;//查找几条店铺信息 一般固定
+}
+RES:{
+   flag:1 查询成功 返回该所有店铺表信息 mes[0]查到的数据 mes[1]总条数
+   flag:2 没有查到信息
+}
+
+//根据设计领域查询表接口
+
+method:get
+url:http://'+ip+'/personal/search
+REQ:{
+  name:''查询领域的字段 如摄影师或摄影
+}
+RES:{
+   flag:1 查询成功 返回该符合该字段店铺表信息
+   flag:2 没有查到信息
+}
+
+
+//申请店铺接口
+
+method:post
+
+url:http://'+ip+'/personal/shop_register
+
+REQ:{
+shopName     店铺名字
+shopType     店铺类型/设计领域
+realName     真实姓名
+email	     邮箱	
+phone        电话
+qq	     QQ号
+briefIntroduction   个人简介/个人介绍
+portrait     个人头像图片路径 --
+works        个人作品图片路径 --			
+address	     地址
+userID	     身份证号
+idPhoto	     身份证正反面图片路径 --
+secretKey    密钥()
+examine      审核结果
+Applicant    申请人ID 申请人ID 申请人ID
+}
+RES:{
+flag:1 shopUid 注册成功 返回该店铺shopUid
+flag:2 店铺名字重复 注册失败
+flag:3 注册失败
+}
+
+//提交审核店铺接口 (就是决定该条信息是否通过审核的接口) //可能没用到
+
+method:post
+
+url:http://'+ip+'/personal/examine
+
+REQ:{
+    examine:'1',      //审核字段 0:审核中 1:通过 2:未通过
+    shopName:'笑笑'   //店铺名字
+}
+RES:{
+    flag:1 审核成功 (成功为该店铺更改审核信息)
+    flag:2 审核失败
+}
+
+//查看审核中 || 审核成功 || 审核失败  的商铺信息 接口  //可能没用到
+
+method:get
+url:http://'+ip+'/personal/auditStatus
+REQ:{
+  auditStatus:'0' //0审核中的信息 1审核成功的信息 2审核失败的信息	
+}
+RES:{
+  flag:1,obj 查询成功 信息被返回 
+  flag:2 查询失败
+  flag:3 查询信息为空/没有符合该条件的信息
+}
+
+//根据申请人ID查询店铺信息
+
+method:get
+url:http://'+ip+'/personal/people
+REQ:{
+  Applicant:'xx' //申请人ID
+}
+RES:{
+  flag:1,obj 查询成功 信息被返回 
+  flag:2 查询失败
+  flag:3 没有该商户/没有符合该条件的商户信息
+}
+
+//根据商户shopUid删除该商户信息接口  //可能没用到
+
+method:post
+url:http://'+ip+'/personal/shop_del
+REQ:{
+  shopUid:'xx' //想要删除的商户shopUid
+}
+RES:{
+  flag:1,obj 删除成功
+  flag:2 删除失败
+  flag:3 没有该商户/没有符合该条件的商户信息
+}
+
+
+
+
+
+
+————————--下划线

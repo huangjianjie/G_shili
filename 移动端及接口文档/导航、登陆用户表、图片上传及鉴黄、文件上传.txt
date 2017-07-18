@@ -1,0 +1,217 @@
+http://47.92.145.129:8000
+
+一级导航
+   method:get
+   url:/users/nav
+         REQ:
+             {
+    
+              }
+         RES:
+             {
+             uid:导航uid
+             
+             name:昵称 
+     
+             }
+
+二级导航
+   method:post
+   url:/users/nav2
+         REQ:
+             {
+            uid:一级uid
+              }
+         RES:
+             {
+             uid:二级导航uid
+             
+             name:昵称 
+     
+   
+             }
+
+登录：
+   method:post
+   url:/users/login
+        REQ:{
+              username:用户名;
+              password：密码；
+             }
+        RES:{
+               username:用户名;
+               uid:uid
+            }
+            1.成功
+            2.密码错误
+            3.用户名不存在
+
+注册
+   method:post
+   url:/users/register
+        REQ:{
+              username:用户名;
+              password：密码；
+             }
+        RES:{
+               username:用户名;
+               uid:uid
+            }
+            1.成功
+            2.密码错误
+            3.用户名不存在
+ 
+
+注册
+   method:post
+   url:/users/yanzhe
+        REQ:{
+              username:用户名
+             }
+        RES:{
+               num:状态
+            }
+
+个人资料详情
+    method:post
+   url:/users/gerenaing
+        REQ:{
+           uid:用户uid
+
+             }
+        RES:{
+               uid  
+
+              email 邮箱
+
+              password 密码
+
+              images 头像
+
+              name 昵称
+
+              shoujih 手机号
+
+              xingming 姓名
+
+               suozaichengs 所在城市
+
+              xingbye 性别
+
+              woddianp 是否开店
+
+              teme 团队申请
+            }
+   
+
+个人资料修改
+   method:post
+   url:/users/ziliao
+        REQ:{
+           uid
+           password 密码
+
+           images 头像
+
+           name 昵称
+
+           shoujih 手机号
+
+           xingming 姓名
+
+           suozaichengs 所在城市
+
+           xingbye 性别
+
+             }
+        RES:{
+               uid  
+
+             email 邮箱
+
+             password 密码
+
+             images 头像
+
+             name 昵称
+
+             shoujih 手机号
+
+             xingming 姓名
+
+              suozaichengs 所在城市
+
+             xingbye 性别
+
+             woddianp 是否开店
+
+             teme 团队申请
+            }
+            
+
+
+店铺
+   method:post
+   url:/users/tusndui
+        REQ:{
+              uid：用户uid;
+              teme：团队uid；
+             }
+        RES:{
+              1.成功 
+            }
+            
+ 
+鉴黄
+
+   method:post
+   url:/yanzhengs/huang
+        REQ:{
+             图片对象
+             }
+        RES:{
+              结果
+            } 
+
+   
+
+文件上传
+
+   method:post
+   url:/yanzhengs/up
+        REQ:{
+             文件（支持zip，rar格式压缩包）
+             }
+        RES:{
+              文件名字
+            } 
+
+图片上传+鉴黄
+
+   method:post
+   url:/yanzhengs/chan
+        REQ:{
+             图片对象
+             }
+        RES:{
+             结果
+            }       
+证件
+method:post
+   url:/yanzhengs/shenfens
+        REQ:{
+             图片对象
+             }
+        RES:{
+             结果
+            } 
+
+//删除
+method：post
+   url :/yanzhengs/shenle
+       REQ:{
+             url:图片服务器的完整路径
+             }
+        RES:{
+             url:成功
+            }   

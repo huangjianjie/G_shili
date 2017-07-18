@@ -1,0 +1,66 @@
+1、提现信息：
+   method:post
+   url:http://47.92.145.129:8000/tixian/tixian
+        REQ:{
+              tMoney:提现钱数;
+              baoBao:支护宝账号；
+              speed:提现进程；
+              TuseId:提现人id；
+             }
+         RES: {
+           flag==1    提现成功
+            }
+
+2、修改提现进度
+   method:post
+   url:http://47.92.145.129:8000/tixian/txId
+        REQ:{
+              id:修改人提现人id；
+              speed:提现进度；      0/不通过  1/通过
+             }
+
+
+3、获取钱包钱数
+   method:get
+   url:http://47.92.145.129:8000/tixian/qb
+        REQ:{
+              qUserId:钱包人的id
+             }
+ 	RES: {
+           qId：生成的id
+           qUserId：钱包人id
+           qMoney：钱包钱数
+         }
+
+
+
+4、获取提现交易明细
+   method:get
+   url:http://http://47.92.145.129:8000/tixian/qianbao
+        REQ:{
+              TuseId:提现人的id
+             }
+        RES: {
+           Tid 生成的id
+           TuseId ：提现人id
+           baoBao：提现人支付宝
+           speed：审核状态
+         }
+         
+5.点击购买时用户付款后改变其个人的钱包钱数：
+	method:post
+   	url:http://http://47.92.145.129:8000/tixian/qbc
+        REQ:{
+              qMoney:钱包钱数
+	      qUserId：钱包人id
+             }
+        RES: {
+              flag==1  付款成功  
+         }  
+       
+
+
+
+
+
+

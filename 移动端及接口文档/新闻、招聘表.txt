@@ -1,0 +1,187 @@
+newId  (新闻id)
+title (新闻标题)
+newsContent（新闻内容）
+newTime（发布时间）
+publisher（发布人）
+
+获取新闻列表
+type: 'get',
+url: 'http://localhost:3000/lhqnews/list',
+data：{
+	num：
+}
+
+
+
+
+
+添加新闻
+type: 'post',
+url: 'http://localhost:3000/lhqnews/TJlist',
+data：{
+       	title: ,
+	newsContent: ,
+	newTime: ,
+	publisher:
+}
+
+
+
+
+删除新闻
+type: 'get',
+url: 'http://localhost:3000/lhqnews/del',
+data:{
+	newId:
+}
+object {flag: 2}//删除成功
+object {flag: 1}//后台错误/删除失败
+object {flag: 3}//删除失败
+
+
+
+
+修改新闻	
+type: 'post',
+url: 'http://localhost:3000/lhqnews/xiugai',
+data:{
+title: ,
+newsContent: ,
+newId:
+}
+Object {flag: 1}//修改成功
+Object {flag: 2}//修改失败
+
+
+查询新闻详情
+type: 'get',
+url: 'http://localhost:3000/lhqnews/xiangqing',
+data:{
+	newId:
+}
+
+
+
+
+
+ContactNumber(联系电话)
+CurrentState（目前状态）
+Education（学历）
+Fullname（姓名）
+Gender（性别）
+HandsOnBackground（工作经验）
+HeadPortrait（头像）
+JobTitle（求职岗位）
+Mailbox（邮箱）
+PlaceOfOrigin（籍贯）
+ProfessionalSkills（专业技能）
+RPublisherId（发布人id）
+SelfEvaluation（自我评价）
+WorkExperience（工作经历）
+WorkProjectExperience（工作项目经验）
+Workarea（工作地区）
+WorkingProperty（工作性质）
+resumeId（此条简历id）
+Age(年龄)
+FBtime（发布时间）
+
+
+获取简历列表
+type: 'get',
+url: 'http://localhost:3000/resume/list',
+data：{
+	num：
+}
+
+
+发布个人简历
+
+type: 'post',
+url: 'http://localhost:3000/resume/meyp',
+data:{
+	ContactNumber:,
+	CurrentState:,
+	Education:,
+	Fullname:,
+	Gender:,
+	HandsOnBackground:,
+	HeadPortrait:,
+	JobTitle:,
+	Mailbox:,
+	PlaceOfOrigin:,
+	ProfessionalSkills:,
+	SelfEvaluation:,
+	WorkExperience:,
+	WorkProjectExperience:,
+	Workarea:,
+	WorkingProperty:,
+	Age:,
+	RPublisherId:,
+	FBtime:
+}
+
+获取简历详情
+type: 'get',
+url: 'http://localhost:3000/resume/zpxq',
+async: true,
+data:{
+	resumeId: ，
+}
+
+
+删除简历					
+type: 'get'，
+url: 'http://localhost:3000/resume/jldel',
+data:{
+	resumeId:，
+}
+object {flag: 2}//删除成功
+object {flag: 1}//后台错误
+object {flag: 3}//删除失败
+
+修改简历
+type: 'post',
+url: 'http://localhost:3000/resume/lhqchange',
+data:{
+ContactNumber: ,
+CurrentState: ,
+Education:  ,
+Fullname: ,
+Gender: ,
+HandsOnBackground: ,
+HeadPortrait: ,
+JobTitle: ,
+Mailbox: ,
+PlaceOfOrigin: ,
+ProfessionalSkills: ,
+SelfEvaluation: ,
+WorkExperience:  ,
+WorkProjectExperience: ,
+Workarea:'Workarea',
+WorkingProperty: ,
+Age: ,
+resumeId:
+}
+{success: 1} //修改成功
+{err: err} //修改错误
+{success: 3} //无修改项
+
+获取发布人简历
+type: 'get',
+url: 'http://47.92.145.129:8000/resume/fbrxx',
+data:{
+	RPublisherId:，
+}
+
+
+
+按地址分类
+type: 'get',
+url: 'http://47.92.145.129:8000/resume/lhqsearch',
+data:{
+	keyword：，（查询城市关键词）
+	num：
+}
+success: "success",dataLen:,totalSize:,data:，(按地址分类查询，有数据)
+err（数据查询失败）
+success: "查无数据"（按地址分类查询，没有数据）
